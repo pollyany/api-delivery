@@ -22,7 +22,14 @@ class DeliveriesStatusController {
       data: { status },
     });
 
-    return response.json({ message: "Delivery status updated successfully" });
+    await prisma.deliveryLog.create({
+      data: {
+        deliveryId: id,
+        description: status,
+      },
+    });
+
+    return response.json();
   }
 }
 
