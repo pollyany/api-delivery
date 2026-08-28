@@ -22,7 +22,7 @@ class DeliveryLogsController {
       throw new AppError("Delivery not found", 404);
     }
 
-    if(delivery.status === "delivered") {
+    if (delivery.status === "delivered") {
       throw new AppError("this order has already been delivered");
     }
 
@@ -67,6 +67,8 @@ class DeliveryLogsController {
     ) {
       throw new AppError("User not authorized to view this delivery log", 403);
     }
+
+    return response.json(delivery);
   }
 }
 
